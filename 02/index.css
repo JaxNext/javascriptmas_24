@@ -1,0 +1,67 @@
+body {
+    --x-red: rgb(217, 11, 28);
+    --dark-green: rgb(46, 89, 69);
+    --bright-green: rgb(66, 140, 71);
+    --dust: rgb(242, 220, 194);
+    --brown: rgb(115, 2, 2);
+    --ink-green: rgb(19, 56, 64);
+    --dark-bg: rgb(30, 44, 62);
+    /* font-family: 'Times New Roman', Times, serif; */
+    background-color: var(--dark-bg);
+  }
+  
+  h2 {
+    margin: 20px;
+    margin-left: 0;
+    color: var(--dust);
+    font-size: 24px;
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+  }
+  
+  h4 {
+    color: var(--dust);
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
+  }
+  
+  .calendar-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 2px;
+    padding: 10px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--dust);
+    border-radius: 10px;
+  }
+  
+  .calendar-box {
+    background-color: var(--bright-green);
+    color: var(--x-red);
+    font-size: 8px;
+    text-align: left;
+    padding: 2px;
+    border: 1px dashed black;
+    list-style-type: none;
+  }
+  
+  .calendar-box .num {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+  }
+  
+  .calendar-box .fas {
+    display: none;
+  }
+  
+  .calendar-box .text {
+    display: none;
+  }
+  
+  /* .calendar-box p {
+    margin: 0;
+    text-align: center;
+    font-size: 12px;
+  } */
+  
