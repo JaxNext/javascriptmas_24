@@ -1,67 +1,115 @@
 body {
-    --x-red: rgb(217, 11, 28);
-    --dark-green: rgb(46, 89, 69);
-    --bright-green: rgb(66, 140, 71);
-    --dust: rgb(242, 220, 194);
-    --brown: rgb(115, 2, 2);
-    --ink-green: rgb(19, 56, 64);
-    --dark-bg: rgb(30, 44, 62);
-    /* font-family: 'Times New Roman', Times, serif; */
-    background-color: var(--dark-bg);
-  }
-  
-  h2 {
-    margin: 20px;
-    margin-left: 0;
-    color: var(--dust);
-    font-size: 24px;
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
-  }
-  
-  h4 {
-    color: var(--dust);
-    font-family: 'Comic Sans MS', 'Comic Sans', cursive;
-  }
-  
-  .calendar-container {
+    /* Christmas color palette */
+    --christmas-red: #D42D2D;
+    --christmas-green: #0F5132;
+    --gold: #FFD700;
+    --cream: #FFF8E7;
+    --dark-red: #8B0000;
+    --forest-green: #1F3624;
+    --snow-white: #FFFFFF;
+    
+    background-color: var(--forest-green);
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main {
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+}
+
+h2 {
+    margin: 20px 0;
+    color: var(--gold);
+    font-size: 36px;
+    font-family: 'Mountains of Christmas', cursive;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+h4 {
+    color: var(--cream);
+    font-family: 'Mountains of Christmas', cursive;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.calendar-container {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); 
-    gap: 2px;
-    padding: 10px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    padding: 20px;
     max-width: 800px;
     margin: 0 auto;
-    background-color: var(--dust);
-    border-radius: 10px;
-  }
-  
-  .calendar-box {
-    background-color: var(--bright-green);
-    color: var(--x-red);
-    font-size: 8px;
+    background-color: var(--christmas-red);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid var(--gold);
+}
+
+.calendar-box {
+    background-color: var(--christmas-green);
+    color: var(--cream);
+    font-size: 10px;
     text-align: left;
-    padding: 2px;
-    border: 1px dashed black;
+    padding: 15px;
+    border-radius: 8px;
     list-style-type: none;
-  }
-  
-  .calendar-box .num {
+    transition: transform 0.2s ease-in-out;
+    border: 1px solid var(--gold);
+    cursor: pointer;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+    position: relative;
+    opacity: 0.7;
+}
+
+.calendar-box.can-open {
+    opacity: 1;
+}
+
+.calendar-box .num {
     text-align: center;
-    font-size: 14px;
-    font-weight: 500;
-    color: #fff;
-  }
-  
-  .calendar-box .fas {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--gold);
+    font-family: 'Mountains of Christmas', cursive;
+}
+
+.calendar-box .info-row {
     display: none;
-  }
-  
-  .calendar-box .text {
-    display: none;
-  }
-  
-  /* .calendar-box p {
-    margin: 0;
-    text-align: center;
-    font-size: 12px;
-  } */
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+}
+
+.calendar-box .fas {
+    /* display: none; */
+    margin-right: 10px;
+}
+
+.calendar-box .text {
+    /* display: none; */
+    backface-visibility: hidden;
+    transition: all 0.5s;
+}
+
+.calendar-box.flipped {
+    transform: rotateY(180deg);
+}
+
+.calendar-box.flipped .text {
+    transform: rotateY(180deg);
+}
+
+/* Add Google Font link to HTML head */
   

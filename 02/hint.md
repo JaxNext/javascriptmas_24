@@ -3,3 +3,7 @@
 - Look up some basics on accessibility ("a11y") and learn how you could improve the a11y of this page, specifically regarding font sizes and color contrasts.
 
 - Stretch goals: consider generating an array of "day" objects that indicate the current state of each day on the calendar. Flip that state when the day is clicked.
+
+1. Click each day could open that day
+2. Every day that is open has a gift in the box
+3. Save the state in the local storage
