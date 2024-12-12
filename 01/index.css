@@ -89,6 +89,23 @@ body {
     border-radius: 4px;
     text-align: left;
     font-size: 1.9em;
-    font-family: 'Caveat'
+    font-family: 'Caveat';
+  }
+
+  .close-btn {
+    margin-left: 10px;
+    width: 16px;
+    height: 16px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 10px;
+    background-color: #ff0000;
+    color: #fff;
+    border-radius: 50%;
+    font-family: 'Poppins';
+    position: relative;
+    top: -5px;
   }
   
