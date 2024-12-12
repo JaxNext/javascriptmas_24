@@ -15,16 +15,18 @@
 	<main>
 		<h1>Guess the Christmas Movie</h1>
 		<!-- This div 👇 contains a hardcoded example.-->
-		<div class="emoji-clues-container" aria-label="Skyline, bomb, police officer, airplane, gun" aria-live="polite">
-			🌇 💣 👮 ✈️ ️🔫
+		<div class="emoji-clues-container" aria-label="" aria-live="polite">
+			<!-- 🌇 💣 👮 ✈️ ️🔫 -->
 		</div>
-		<form id="guess-input">
+		<form id="guess-form">
 			<label for="guess-input">Enter your guess</label>
 			<input type="text" placeholder="E.g. Home Alone" id="guess-input" name="guess-input">
-			<button type="submit">Submit Guess</button>
+			<button type="submit" id="guess-submit">Submit Guess</button>
 		</form>
 		<!-- The message in this div 👇 will need updating as the game progresses.-->
-		<div class="message-container" aria-live="polite">You have 3 guesses remaining.</div>
+		<div class="message-container" aria-live="polite">
+			<!-- You have 3 guesses remaining. -->
+		</div>
 	</main>
 	<script type="module" src="index.js"></script>
 </body>

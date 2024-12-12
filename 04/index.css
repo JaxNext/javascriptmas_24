@@ -95,3 +95,8 @@ button:hover {
     color: #27ae60;
     min-height: 40px; /* Ensures space is allocated even if empty */
 }
+
+#guess-form:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}

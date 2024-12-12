@@ -29,9 +29,85 @@ Stretch Goals
 - Improve the UX by disabling the form/button when the game is over and during the pause between questions.
 */
 
-import { films } from '/data.js'
+import { films } from './data.js'
 
 // Some useful elements
 const guessInput = document.getElementById('guess-input')
 const messageContainer = document.getElementsByClassName('message-container')[0]
 const emojiCluesContainer = document.getElementsByClassName('emoji-clues-container')[0]
+const form = document.getElementById('guess-form')
+const guessSubmit = document.getElementById('guess-submit')
+let puzzleList = [...films]
+let puzzleCount = 0
+let maxPuzzles = films.length
+let maxChances = 3
+let chances = maxChances
+let puzzle = {}
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    let guess = guessInput.value?.trim()
+    if (!guess) return
+
+    guess = guess.toLowerCase()
+    const answer = puzzle.title.toLowerCase()
+
+    if (guess === answer) {
+        setMsg('Correct!')
+        toggleLockForm(true)
+        setTimeout(() => {
+            init()
+        }, 3000)
+    } else {
+      if (chances > 1) {
+        chances--
+        setMsg(`Incorrect! You have ${chances} more guesses remaining.`)
+      } else {
+        setMsg(`The film was: ${puzzle.title}!`)
+        toggleLockForm(true)
+        setTimeout(() => {
+            init()
+        }, 3000)
+      }
+    }
+})
+
+function toggleLockForm(lock){
+    form.disabled = lock
+    guessInput.disabled = lock
+    guessSubmit.disabled = lock
+}
+
+function genPuzzle(){
+    if (puzzleCount >= maxPuzzles) return
+    const randomIndex = Math.floor(Math.random() * puzzleList.length)
+    const randomFilm = puzzleList[randomIndex]
+    puzzleList = puzzleList.filter(film => film.id !== randomFilm.id)
+    puzzleCount++
+    return randomFilm
+}
+
+function setPuzzle(puzzle){
+    emojiCluesContainer.innerHTML = puzzle.emoji.join(' ')
+    emojiCluesContainer.setAttribute('aria-label', puzzle.ariaLabel)
+}
+
+function setMsg(msg){
+    messageContainer.innerHTML = msg
+}
+
+function init () {
+    if (puzzleCount >= maxPuzzles) {
+        setMsg('That\'s all folks!')
+        toggleLockForm(true)
+        return
+    }
+    guessInput.value = ''
+    puzzle = genPuzzle()
+    setPuzzle(puzzle)
+    chances = maxChances
+    setMsg(`You have ${chances} guesses remaining.`)
+    toggleLockForm(false)
+}
+
+init()
