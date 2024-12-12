@@ -24,8 +24,14 @@ let anagrams = [
 ];
 
 function findAnagrams(array){
-    // write your code here
+    return array.filter(pair => isAnagram(pair[0], pair[1]))
 }
 
+function isAnagram(str1, str2){
+    return washString(str1) === washString(str2)
+}
+function washString(str){
+    return str.toLowerCase().replace(/\s+/g, '').split('').sort().join('')
+}
 
- 
+console.log(findAnagrams(anagrams))
