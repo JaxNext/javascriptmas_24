@@ -2,13 +2,15 @@ const calendarContainer = document.getElementById('calendar');
 const christmasEmojis = ['🎁', '🎄', '⛄', '🦌', '🎅', '🤶', '🔔', '🎉', '❄️', '⭐'];
 
 const initialDateList = []
-const today = new Date().getDate();
-console.log('today', today);
+const now = new Date();
+const christmas = new Date('2023-12-25');
+const daysUntilChristmas = (christmas - now) / (1000 * 60 * 60 * 24);
+
 for (let i = 1; i <= 24; i++) {
   const obj = {
     index: i,
     gift: '',
-    canOpen: i <= today,
+    canOpen: daysUntilChristmas <= i,
     isOpen: false
   }
   initialDateList.push(obj)
