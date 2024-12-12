@@ -16,6 +16,9 @@ const hackedEmojis = {
     "puke":             "🤩"    // 🤮
 }
 
+const input = document.getElementById('input')
+const resBox = document.getElementById('res-box')
+
 
 /* 1. Write a function that checks if a lowercase word starts and 
 ends with a colon. If it does, check if it exists in the hackedEmojis object, 
@@ -37,8 +40,6 @@ function emojifyWord(word){
     return res
 }
 
-console.log(emojifyWord(":angry:"));
-
 
 /* 2. Write a function to find any emoji shortcodes in a phrase.
 Use your emojify function from the previous exercise!
@@ -51,10 +52,15 @@ function emojifyPhrase(phrase){
     return emojifyWord(phrase)
 }
 
-console.log(emojifyPhrase("Those shoes :puke:"));
+input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        resBox.innerHTML = emojifyPhrase(input.value)
+    }
+})
 
 
 // Stretch goal: don't just replace the shortcodes, but also 
 // any emojis are added directly to the text.
+
 
 
