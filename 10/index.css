@@ -1,3 +1,202 @@
 html, body {
     margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1E1E1E;
+}
+
+main {
+    position: relative;
+    width: 360px;
+    height: 225px;
+}
+
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(45deg, 
+        #2C5530 25%, 
+        #4A4A4A 25%, 
+        #4A4A4A 50%, 
+        #2C5530 50%, 
+        #2C5530 75%, 
+        #4A4A4A 75%);
+    background-size: 56.57px 56.57px;
+    z-index: 1;
+}
+
+.santa {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+.hat-box {
+    position: relative;
+}
+.hat {
+    position: relative;
+    width: 100px;
+    height: 80px;
+    background: red;
+    border-radius: 60px 60px 0 0;
+    border-top-right-radius: unset;
+    z-index: 9;
+}
+
+.hat-band {
+    position: absolute;
+    width: 120px;
+    height: 40px;
+    background: #ddd;
+    border-radius: 10px;
+    left: -10px;
+    bottom: -10px;
+    z-index: 10;
+}
+
+.hat-pom {
+    position: absolute;
+    top: 10px;
+    right: -30px;
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    z-index: 8;
+}
+.hat-pom.red-pom {
+    position: absolute;
+    top: 0;
+    right: -14px;
+    width: 30px;
+    height: 30px;
+    background: #E23D28;
+    border-radius: 50%;
+    z-index: 7;
+}
+
+.ears {
+    position: absolute;
+    top: 97px;
+    left: -5px;
+    width: 110px;
+    height: 20px;
+    background: orange;
+    border-radius: 20px;
+}
+.hair {
+    position: absolute;
+    top: 83px;
+    left: -5px;
+    width: 110px;
+    height: 20px;
+    background: #fff;
+    border-radius: 20px;
+}
+
+.collar-box {
+    position: absolute;
+    top: 124px;
+    left: -3px;
+    width: 106px;
+    height: 50px;
+    background: #fff;
+    border-radius: 20px;
+}
+.collar-box .collar:nth-of-type(1) {
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 40px;
+    background: #fff;
+    border-radius: 20px;
+}
+.collar-box .collar:nth-of-type(2) {
+    position: absolute;
+    top: 23px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 20px;
+}
+.collar-box.mustache-box {
+    background: #ddd;
+    width: 86px;
+    left: 7px;
+    top: 119px;
+}
+.mustache-box .collar:nth-of-type(1),
+.mustache-box .collar:nth-of-type(2) {
+    background: #ddd;
+}
+
+.face {
+    position: relative;
+    width: 100px;
+    height: 80px;
+    background: #FFE1C9;
+    border-radius: 20px;
+    margin-top: -10px;
+}
+
+.eyes {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.eyes::before,
+.eyes::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #1E1E1E;
+    border-radius: 50%;
+}
+
+.beard {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 40px;
+    background: #DDDDDD;
+    border-radius: 0 0 40px 40px;
+}
+
+.mouth {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 20px;
+    background: black;
+    border-radius: 0 0 15px 15px;
+}
+
+.mouth::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 8px;
+    width: 14px;
+    height: 8px;
+    background: #FF4D4D;
+    border-radius: 7px;
 }
