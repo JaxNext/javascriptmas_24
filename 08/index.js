@@ -1,10 +1,11 @@
 // The keyboard has been rendered for you
-import { renderKeyboard } from '/keyboard'
+import { renderKeyboard } from './keyboard.js'
 document.getElementById('keyboard-container').addEventListener('click', checkGuess)
 
 // Some useful elements
 const guessContainer = document.getElementById('guess-container')
 const snowmanParts = document.getElementsByClassName('snowman-part')
+const sunglasses = document.querySelector('.sunglasses')
 
 /*
 Challenge  
@@ -32,10 +33,76 @@ Challenge
 const word = "gift"
 // 6 guesses for the 6 parts of the snowman
 let guesses = 6
+let guessArr = []
 
-
-function checkGuess() {
-    
+function renderGuess() {
+    const guessHtml = guessArr.map((char) => {
+        return `<div class="guess-char">${char}</div>`
+    })
+    guessContainer.innerHTML = guessHtml.join('')
 }
 
+function start() {
+    for (let i = 0; i < word.length; i++) {
+        guessArr.push('-')
+    }
+    renderGuess()
+}
+
+function checkGuess(e) {
+    if (!e.target.matches('.letter')) return
+    
+    const letter = e.target.id
+    const letterButton = e.target
+    let foundLetter = false
+    
+    // Disable the clicked letter
+    letterButton.disabled = true
+    
+    // Check if letter exists in word
+    word.split('').forEach((char, index) => {
+        if (char === letter) {
+            guessArr[index] = letter
+            foundLetter = true
+        }
+    })
+    
+    // If letter not found, remove a snowman part
+    if (!foundLetter) {
+        guesses--
+        if (snowmanParts[guesses]) {
+            snowmanParts[guesses].style.visibility = 'hidden'
+        }
+    }
+    
+    renderGuess()
+    checkGameEnd()
+}
+
+function checkGameEnd() {
+    // Check for win
+    if (!guessArr.includes('-')) {
+        guessContainer.innerHTML = '<div class="message">You Win!</div>'
+        // Show all snowman parts and add sunglasses
+        Array.from(snowmanParts).forEach(part => part.style.visibility = 'visible')
+        sunglasses.style.visibility = 'visible'
+        removeKeyboardListener()
+        return
+    }
+    
+    // Check for lose
+    if (guesses === 0) {
+        guessContainer.innerHTML = '<div class="message">You Lose!</div>'
+        removeKeyboardListener()
+        return
+    }
+}
+
+function removeKeyboardListener() {
+    document.getElementById('keyboard-container')
+        .removeEventListener('click', checkGuess)
+}
+
+// Initialize the game
+start()
 renderKeyboard()
