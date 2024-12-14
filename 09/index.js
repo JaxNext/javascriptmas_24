@@ -54,11 +54,18 @@ const guest = {
   // 2: Contains zero ingredients that Alice dislikes
   
   // Step 1: Filter recipes based on Alice's preferences
-  
-  
-  
-  
-  
+  const suitableRecipes = recipes.filter((recipe) => {
+    const hasLoved = recipe.ingredients.some(ingredient => 
+        guest.loves.includes(ingredient)
+    );
+    
+    const hasDisliked = recipe.ingredients.some(ingredient => 
+        guest.dislikes.includes(ingredient)
+    );
+    
+    return hasLoved && !hasDisliked;
+  });
   
   // Step 2: Output the suitable recipes
+  console.log(suitableRecipes.map(recipe => recipe.name).join(', '));
   
