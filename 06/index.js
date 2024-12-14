@@ -6,6 +6,23 @@ Challenge:
 1. Write JavaScript to create a snowflake and make it fall inside the snow globe. The snowflake should have a random starting position, animation duration, and size.
 2. See index.css
 */ 
+    const snowflake = document.createElement('div')
+    snowflake.classList.add('snowflake')
+    snowflake.textContent = '❄️'
+    
+    const startingPosition = Math.random() * 100
+    const animationDuration = Math.random() * 3 + 2
+    const size = Math.random() * 1.5 + 0.8
+
+    snowflake.style.left = `${startingPosition}%`
+    snowflake.style.animationDuration = `${animationDuration}s`
+    snowflake.style.fontSize = `${size}em`
+    
+    snowGlobe.appendChild(snowflake)
+    
+    snowflake.addEventListener('animationend', () => {
+        snowflake.remove()
+    })
 }
 
 setInterval(createSnowflake, 100) // Let's create a snowflake every 100 milliseconds!

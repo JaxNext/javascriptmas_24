@@ -46,15 +46,16 @@
   .snowflake {
     position: absolute;
     top: -10px;
-    user-select: none;
     pointer-events: none;
-    animation: fall linear infinite;
-    z-index: 4;
+    animation: fall linear forwards;
+    animation-play-state: running;
+    font-size: 1.5em;
   }
   
   @keyframes fall {
     to {
-      transform: translateY(100vh);
+        transform: translateY(380px);
+        opacity: 0;
     }
   }
   
