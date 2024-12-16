@@ -18,3 +18,73 @@ Stretch Goals for dedicated Social Media Engineers
 */
 
 import { feedData } from './data.js'
+
+// Get DOM elements
+const feedAvatarsSection = document.querySelector('.feed-avatars')
+const feedImagesSection = document.querySelector('.feed-images')
+
+function renderAvatars() {
+    feedData.forEach(friend => {
+        feedAvatarsSection.innerHTML += `
+            <img 
+                src="images/${friend.avatarUrl}" 
+                alt="${friend.handle}'s avatar" 
+                class="avatar"
+                data-handle="${friend.handle}"
+            >
+        `
+    })
+}
+
+function renderAvatarHighlight(handle, highlight = true) {
+    const avatar = document.querySelector(`[data-handle="${handle}"]`)
+    if (highlight) {
+        avatar.classList.add('highlight')
+    } else {
+        avatar.classList.remove('highlight')
+    }
+}
+
+function renderImage(imageData) {
+    feedImagesSection.innerHTML = `
+        <img 
+            src="images/${imageData.imageUrl}" 
+            alt="${imageData.alt}" 
+            class="feature-image"
+        >
+    `
+}
+
+async function handleTimer() {
+    // Remove loading animation
+    feedImagesSection.innerHTML = ''
+    
+    for (let friend of feedData) {
+        // Highlight current friend's avatar
+        renderAvatarHighlight(friend.handle)
+        
+        // Display each of their images
+        for (let feature of friend.features) {
+            renderImage(feature)
+            // Wait 1.5 seconds before showing next image
+            await new Promise(resolve => setTimeout(resolve, 1500))
+        }
+        
+        // Remove highlight after friend's images are done
+        renderAvatarHighlight(friend.handle, false)
+    }
+    
+    // Show refresh message when all images have been displayed
+    feedImagesSection.innerHTML = `
+        <p class="ux-message">Refresh to load latest images</p>
+    `
+}
+
+// Initialize the app
+function init() {
+    renderAvatars()
+    // Start the image slideshow after a short delay
+    setTimeout(handleTimer, 1500)
+}
+
+init()
