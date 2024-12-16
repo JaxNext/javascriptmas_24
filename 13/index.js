@@ -3,7 +3,37 @@
 
 // Good luck and happy coding!!
 function correctChangeFromSanta(bills) {
+    // Keep track of available bills
+    let fives = 0;
+    let tens = 0;
     
+    // Process each payment
+    for (let bill of bills) {
+        if (bill === 5) {
+            // If they pay with $5, no change needed
+            fives++;
+        }
+        else if (bill === 10) {
+            // Need to give $5 change
+            if (fives === 0) return false;
+            fives--;
+            tens++;
+        }
+        else if (bill === 20) {
+            // Need to give $15 change
+            // Can give either three $5 bills or one $10 and one $5
+            if (tens > 0 && fives > 0) {
+                tens--;
+                fives--;
+            } else if (fives >= 3) {
+                fives -= 3;
+            } else {
+                return false;
+            }
+        }
+    }
+    
+    return true;
 }
 
 
