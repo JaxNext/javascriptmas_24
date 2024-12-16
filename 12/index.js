@@ -78,11 +78,15 @@ document.addEventListener('submit', (e) => {
     }
 
     const textArea = document.getElementById('text-area')
-    const text = textArea.value;
+    const text = washInput(textArea.value);
     const textDisp = document.getElementById('text-output');
     textDisp.innerHTML += `<p>${stars.join(' ')} ${text}</p>`;
     textArea.value = ''
 });
+
+function washInput(input) {
+    return input.replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+}
 
 
 document.getElementById('prod-buy').addEventListener('click', function(){
