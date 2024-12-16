@@ -2,6 +2,67 @@
     --green: #024f1a; 
 }
 
+.container {
+    width: 100vw;
+    height: 170vw;
+    background-color: var(--green);
+    position: relative;
+    overflow: hidden;
+}
+
 img {
-    width: 200px;
+    height: 130%;
+    position: relative;
+    left: -24%;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: 700;
+    color: white;
+    position: absolute;
+    top: 5%;
+    right: 10%;
+    text-align: right;
+    span {
+        font-size: 30px;
+    }
+}
+
+.text-box {
+    font-size: 20px;
+    font-weight: 400;
+    color: white;
+    position: absolute;
+    top: 25%;
+    right: 10%;
+    text-align: center;
+    line-height: 1.5;
+    border: 1px solid #000;
+    border-left: none;
+    border-right: none;
+    padding: 10px;
+}
+
+.cover-box {
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    box-sizing: border-box;
+    padding: 30px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    .title {
+        font-size: 40px;
+        font-weight: 700;
+    }
+    .subtitle {
+        font-size: 16px;
+        font-weight: 400;
+    }
+    .desc {
+        font-size: 20px;
+        font-weight: 400;
+    }
 }
